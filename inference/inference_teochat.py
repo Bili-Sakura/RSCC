@@ -1,17 +1,13 @@
 import sys
 
-sys.path.append("/home/sakura/projects/RSCC/libs")
-sys.path.append("/home/sakura/projects/RSCC/utils")
+
+sys.path.append("./")
 import os
 import PIL
-from videollava.eval.eval import load_model
-from videollava.eval.inference import run_inference_single
+from libs.videollava.eval.eval import load_model
+from libs.videollava.eval.inference import run_inference_single
 from utils.model_teochat import teochat_model_loader
-
-DEFAULT_DEVICE = "cuda:0"
-MAX_NEW_TOKENS = 512
-TEMPERATURE = 0.0001
-PATH_TO_MODEL_FOLDER = "/home/models"
+from utils.constants import DEFAULT_DEVICE, MAX_NEW_TOKENS
 
 
 def inference_teochat(
@@ -24,6 +20,7 @@ def inference_teochat(
 ):
     if model_hub is not None:
         try:
+            loading_model_id = model_hub[model_id]["model_id"]
             model = model_hub[model_id]["model"]
             processor = model_hub[model_id]["processor"]
             tokenizer = model_hub[model_id]["tokenizer"]
@@ -32,10 +29,15 @@ def inference_teochat(
     else:
 
         model_hub = teochat_model_loader(model_id=model_id, device=device)
+        loading_model_id = model_hub[model_id]["model_id"]
         model = model_hub[model_id]["model"]
         processor = model_hub[model_id]["processor"]
         tokenizer = model_hub[model_id]["tokenizer"]
-
+    if loading_model_id != model_id:
+        print(
+            f"Inference model_id is {model_id} while loading model checkpoint is {loading_model_id}"
+        )
+        return ""
     image_paths = [pre_image, post_image]
     # Note you must include the video tag <video> in the input string otherwise the model will not process the images.
 
@@ -48,7 +50,7 @@ def inference_teochat(
         image_paths,
         chronological_prefix=True,
         conv_mode="v1",
-        temperature=TEMPERATURE,
+        # temperature=TEMPERATURE,
         max_new_tokens=MAX_NEW_TOKENS,
     )
     change_caption = response

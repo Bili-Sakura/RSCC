@@ -1,31 +1,26 @@
 import sys
 
-sys.path.append("/home/sakura/projects/RSCC/libs")
-sys.path.append("/home/sakura/projects/RSCC/utils")
+sys.path.append("./libs")
 import os
 import PIL
-from llava.model.builder import load_pretrained_model
-from llava.mm_utils import (
+from libs.llava.model.builder import load_pretrained_model
+from libs.llava.mm_utils import (
     get_model_name_from_path,
     process_images,
     tokenizer_image_token,
 )
-from llava.constants import (
+from libs.llava.constants import (
     IMAGE_TOKEN_INDEX,
     DEFAULT_IMAGE_TOKEN,
     DEFAULT_IM_START_TOKEN,
     DEFAULT_IM_END_TOKEN,
     IGNORE_INDEX,
 )
-from llava.conversation import conv_templates, SeparatorStyle
+from libs.llava.conversation import conv_templates, SeparatorStyle
 from utils.model_ccexpert import ccexpert_model_loader
+from utils.constants import DEFAULT_DEVICE, MAX_NEW_TOKENS
 import torch
 import copy
-
-DEFAULT_DEVICE = "cuda:0"
-MAX_NEW_TOKENS = 512
-TEMPERATURE = 0.0001
-PATH_TO_MODEL_FOLDER = "/home/models"
 
 
 def inference_ccexpert(
@@ -38,18 +33,23 @@ def inference_ccexpert(
 ):
     if model_hub is not None:
         try:
+            loading_model_id = model_hub[model_id]["model_id"]
             model = model_hub[model_id]["model"]
             tokenizer = model_hub[model_id]["tokenizer"]
             image_processor = model_hub[model_id]["image_processor"]
         except:
             print(f"Error Loading {model_id}.")
     else:
-        # model_path = os.path.join(PATH_TO_MODEL_FOLDER, model_id)
         model_hub = ccexpert_model_loader(model_id=model_id, device=device)
+        loading_model_id = model_hub[model_id]["model_id"]
         model = model_hub[model_id]["model"]
         tokenizer = model_hub[model_id]["tokenizer"]
         image_processor = model_hub[model_id]["image_processor"]
-
+    if loading_model_id != model_id:
+        print(
+            f"Inference model_id is {model_id} while loading model checkpoint is {loading_model_id}"
+        )
+        return ""
     # Load two images
     images = [pre_image, post_image]
     image_tensors = process_images(images, image_processor, model.config)
@@ -85,8 +85,8 @@ def inference_ccexpert(
         input_ids,
         images=image_tensors,
         image_sizes=image_sizes,
-        do_sample=False,
-        temperature=TEMPERATURE,
+        # do_sample=False,
+        # temperature=TEMPERATURE,
         max_new_tokens=MAX_NEW_TOKENS,
     )
     text_outputs = tokenizer.batch_decode(cont, skip_special_tokens=True)

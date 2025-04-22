@@ -1,2 +1,6 @@
-/logs/
-/output/
+data/token_usage.json
+sample_data/
+output/
+notebook/
+logs/
+.vscode/

@@ -8,39 +8,18 @@ from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
 from mistral_common.protocol.instruct.messages import UserMessage, TextChunk, ImageChunk
 from mistral_common.protocol.instruct.request import ChatCompletionRequest
 
-from typing import Literal, Union, List
 import PIL
 from PIL import Image
 import torch
-import os
-import numpy as np
 import sys
 
-sys.path.append("../")
+sys.path.append("./")
 from utils.model_hub import model_loader
-
-DEFAULT_DEVICE = "cuda:0"
-MAX_NEW_TOKENS = 512
-TEMPERATURE = 0.0001
-MODEL_LIST = [
-    "Qwen/Qwen2-VL-7B-Instruct",
-    "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
-    "OpenGVLab/InternVL2_5-8B",
-    "llava-hf/llava-interleave-qwen-7b-hf",
-    "llava-hf/llava-onevision-qwen2-7b-ov-hf",
-    "mistralai/Pixtral-12B-2409",
-]
+from utils.constants import DEFAULT_DEVICE, MAX_NEW_TOKENS, TEMPERATURE
 
 
 def inference_naive(
-    model_id: Literal[
-        "Qwen/Qwen2-VL-7B-Instruct",
-        "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
-        "OpenGVLab/InternVL2_5-8B",
-        "llava-hf/llava-interleave-qwen-7b-hf",
-        "llava-hf/llava-onevision-qwen2-7b-ov-hf",
-        "mistralai/Pixtral-12B-2409",
-    ],
+    model_id: str,
     text_prompt: str,
     pre_image: PIL.Image.Image,
     post_image: PIL.Image.Image,
@@ -49,6 +28,7 @@ def inference_naive(
 ) -> str:
     if model_hub is not None:
         try:
+            loading_model_id = model_hub[model_id]["model_id"]
             model = model_hub[model_id]["model"]
             processor = model_hub[model_id]["processor"]
             tokenizer = model_hub[model_id]["tokenizer"]
@@ -56,19 +36,72 @@ def inference_naive(
         except:
             print(f"Error Loading {model_id} from model_hub.")
     else:
-        model, processor, tokenizer, image_processor = model_loader(model_id, device)
+        loading_model_id, model, processor, tokenizer, image_processor = model_loader(
+            model_id, device
+        )
+    if loading_model_id != model_id:
+        print(
+            f"Inference model_id is {model_id} while loading model checkpoint is {loading_model_id}"
+        )
+        return ""
 
-    if model_id == "Qwen/Qwen2-VL-7B-Instruct":
+    if model_id == "moonshotai/Kimi-VL-A3B-Instruct":
         messages = [
             {
                 "role": "user",
                 "content": [
+                    {"type": "image"},
+                    {"type": "image"},
                     {
                         "type": "text",
                         "text": text_prompt,
                     },
+                ],
+            }
+        ]
+        text = processor.apply_chat_template(
+            messages, add_generation_prompt=True, return_tensors="pt"
+        )
+        inputs = processor(
+            images=[pre_image, post_image],
+            text=text,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+        ).to(device)
+        generated_ids = model.generate(
+            **inputs,
+            max_new_tokens=MAX_NEW_TOKENS,
+            # temperature=TEMPERATURE,
+            # do_sample=False,
+        )
+        generated_ids_trimmed = [
+            out_ids[len(in_ids) :]
+            for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
+        ]
+        response = processor.batch_decode(
+            generated_ids_trimmed,
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False,
+        )
+        change_caption = response[0]
+
+    elif (
+        model_id == "Qwen/Qwen2-VL-7B-Instruct"
+        or model_id == "Qwen/Qwen2-VL-72B-Instruct"
+        or model_id == "Qwen/Qwen2.5-VL-7B-Instruct"
+        or model_id == "Qwen/Qwen2.5-VL-72B-Instruct"
+    ):
+        messages = [
+            {
+                "role": "user",
+                "content": [
                     {"type": "image", "image": pre_image},
                     {"type": "image", "image": post_image},
+                    {
+                        "type": "text",
+                        "text": text_prompt,
+                    },
                 ],
             }
         ]
@@ -82,7 +115,9 @@ def inference_naive(
         ).to(device, torch.bfloat16)
         # Generate captions for the input image pair
         generated_ids = model.generate(
-            **inputs, max_new_tokens=MAX_NEW_TOKENS, temperature=TEMPERATURE
+            **inputs,
+            max_new_tokens=MAX_NEW_TOKENS,
+            # temperature=TEMPERATURE
         )
         generated_ids_trimmed = [
             out_ids[len(in_ids) :]
@@ -94,6 +129,29 @@ def inference_naive(
             clean_up_tokenization_spaces=False,
         )
         change_caption = captions[0]
+    elif model_id == "microsoft/Phi-4-multimodal-instruct":
+        messages = [
+            {
+                "role": "user",
+                "content": "<|image_1|>" + "<|image_2|>" + text_prompt,
+            },
+        ]
+        prompt = processor.tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+        inputs = processor(prompt, [pre_image, post_image], return_tensors="pt").to(
+            device
+        )
+        generate_ids = model.generate(
+            **inputs,
+            num_logits_to_keep=1,
+            max_new_tokens=MAX_NEW_TOKENS,
+        )
+        generate_ids = generate_ids[:, inputs["input_ids"].shape[1] :]
+        response = processor.batch_decode(
+            generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False
+        )
+        change_caption = response[0]
 
     elif model_id == "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5":
 
@@ -123,15 +181,15 @@ def inference_naive(
             **inputs,
             image_size=[image_sizes],
             pad_token_id=tokenizer.pad_token_id,
-            temperature=TEMPERATURE,
+            # temperature=TEMPERATURE,
             max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=True,
+            # do_sample=True,
         )
         change_caption = tokenizer.decode(
             generated_text[0], skip_special_tokens=True
         ).split("<|end|>")[0]
 
-    elif model_id == "OpenGVLab/InternVL2_5-8B":
+    elif model_id == "OpenGVLab/InternVL3-8B" or model_id == "OpenGVLab/InternVL3-78B":
 
         def build_transform(input_size):
             IMAGENET_MEAN = (0.485, 0.456, 0.406)
@@ -229,7 +287,9 @@ def inference_naive(
             return pixel_values
 
         generation_config = dict(
-            max_new_tokens=MAX_NEW_TOKENS, do_sample=True, temperature=TEMPERATURE
+            max_new_tokens=MAX_NEW_TOKENS,
+            # do_sample=True,
+            # temperature=TEMPERATURE
         )
         pixel_values1 = load_image(pre_image).to(device, torch.bfloat16)
         pixel_values2 = load_image(post_image).to(device, torch.bfloat16)
@@ -249,12 +309,12 @@ def inference_naive(
             {
                 "role": "user",
                 "content": [
+                    {"type": "image"},
+                    {"type": "image"},
                     {
                         "type": "text",
                         "text": text_prompt,
                     },
-                    {"type": "image"},
-                    {"type": "image"},
                 ],
             },
         ]
@@ -268,8 +328,8 @@ def inference_naive(
             **inputs,
             pad_token_id=processor.tokenizer.eos_token_id,
             max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=True,
-            temperature=TEMPERATURE,
+            # do_sample=True,
+            # temperature=TEMPERATURE,
         )
 
         change_caption = processor.decode(output[0], skip_special_tokens=True).split(
@@ -280,12 +340,12 @@ def inference_naive(
             {
                 "role": "user",
                 "content": [
+                    {"type": "image"},
+                    {"type": "image"},
                     {
                         "type": "text",
                         "text": text_prompt,
                     },
-                    {"type": "image"},
-                    {"type": "image"},
                 ],
             },
         ]
@@ -299,8 +359,8 @@ def inference_naive(
             **inputs,
             pad_token_id=processor.tokenizer.eos_token_id,
             max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=True,
-            temperature=TEMPERATURE,
+            # do_sample=True,
+            # temperature=TEMPERATURE,
         )
 
         change_caption = processor.decode(output[0], skip_special_tokens=True).split(
