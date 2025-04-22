@@ -1,28 +1,26 @@
 import sys
 
-sys.path.append("/home/sakura/projects/RSCC/libs")
+sys.path.append("./")
 import os
-from llava.model.builder import load_pretrained_model
-from llava.mm_utils import (
+from libs.llava.model.builder import load_pretrained_model
+from libs.llava.mm_utils import (
     get_model_name_from_path,
     process_images,
     tokenizer_image_token,
 )
-from llava.constants import (
+from libs.llava.constants import (
     IMAGE_TOKEN_INDEX,
     DEFAULT_IMAGE_TOKEN,
     DEFAULT_IM_START_TOKEN,
     DEFAULT_IM_END_TOKEN,
     IGNORE_INDEX,
 )
-from llava.conversation import conv_templates, SeparatorStyle
+from libs.llava.conversation import conv_templates, SeparatorStyle
 import torch
 import warnings
+from utils.constants import DEFAULT_DEVICE, PATH_TO_MODEL_FOLDER
 
 warnings.filterwarnings("ignore")
-
-DEFAULT_DEVICE = "cuda:0"
-PATH_TO_MODEL_FOLDER = "/home/models"
 
 
 def ccexpert_model_loader(
@@ -38,9 +36,12 @@ def ccexpert_model_loader(
         # "ignore_mismatched_sizes":True,
         "multimodal": True,
         "overwrite_config": {
-            "vocab_size": 152064 if "7b" in model_path.lower() else 151936
+            "vocab_size": 152064 if "7b" in model_path.lower() else 151936,
+            "mm_vision_tower": os.path.join(
+                PATH_TO_MODEL_FOLDER, "google/siglip-so400m-patch14-384"
+            ),
         },
-        "device_map": {"": DEFAULT_DEVICE},  # Using the variable here
+        "device_map": {"": device},
     }
     tokenizer, model, image_processor, max_length = load_pretrained_model(
         model_path,
@@ -55,6 +56,7 @@ def ccexpert_model_loader(
 
     model_hub = {}
     model_hub[model_id] = {}  # Initialize the dictionary for this model_id
+    model_hub[model_id]["model_id"] = model_id
     model_hub[model_id]["model"] = model
     model_hub[model_id]["tokenizer"] = tokenizer
     model_hub[model_id]["image_processor"] = image_processor

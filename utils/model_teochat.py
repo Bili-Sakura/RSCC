@@ -1,11 +1,9 @@
 import sys
 
-sys.path.append("/home/sakura/projects/RSCC/libs")
-import os
-from videollava.eval.eval import load_model
 
-DEFAULT_DEVICE = "cuda:0"
-PATH_TO_MODEL_FOLDER = "/home/models"
+import os
+from libs.videollava.eval.eval import load_model
+from utils.constants import DEFAULT_DEVICE, PATH_TO_MODEL_FOLDER
 
 
 def teochat_model_loader(
@@ -22,6 +20,7 @@ def teochat_model_loader(
     )
     model_hub = {}
     model_hub[model_id] = {}  # Initialize the dictionary for this model_id
+    model_hub[model_id]["model_id"] = model_id
     model_hub[model_id]["model"] = model
     model_hub[model_id]["processor"] = processor
     model_hub[model_id]["tokenizer"] = tokenizer
