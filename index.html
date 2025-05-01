@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>RSCC: ALarge-Scale Remote Sensing Change Caption Dataset for Disaster Events</title>
+  <title>RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,26 +52,22 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
+              <span class="author-block">Zhenyuan Chen,</span>
+              <span class="author-block">Chenxi Wang,</span>
+              <span class="author-block">Ningyu Zhang,</span>
+              <span class="author-block">Feng Zhang</span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block">Zhejiang University<br>under review 2025</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
                   <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
+                    <!-- <div class="publication-links">
                       <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
@@ -80,10 +76,10 @@
                         </span>
                         <span>Paper</span>
                       </a>
-                    </span>
+                    </span> -->
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -91,11 +87,11 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/Bili-Sakura/RSCC" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -105,7 +101,7 @@
                 </span>
 
                 <!-- ArXiv abstract Link -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -113,7 +109,17 @@
                   </span>
                   <span>arXiv</span>
                 </a>
+              </span> -->
+            <!-- HuggingFace Datasets link -->
+            <span class="link-block">
+              <a href="https://huggingface.co/datasets/BiliSakura/RSCC" target="_blank"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fas fa-database"></i>
               </span>
+              <span>Dataset</span>
+            </a>
+            </span>
             </div>
           </div>
         </div>
@@ -147,7 +153,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Remote sensing is critical for disaster monitoring, yet existing datasets lack temporal image pairs and detailed textual annotations. While single-snapshot imagery dominates current resources, it fails to capture dynamic disaster impacts  over time. To address this gap, we introduce the Remote Sensing Change Caption (RSCC) dataset, a large-scale dataset comprising 62,351 pre-event and post-event remote sensing image pairs (spanning earthquakes, floods, wildfires, and more) paired with detailed change captions. Based on RSCC dataset, we develop a change caption benchmark and evaluate the performance of several state-of-the-art temporal MLLMs. Given the quantitative and qualitative results, we demonstrate the limitations of models' capability in complex temporal remote sensing image understanding. Our work aims to facilitate the training and evaluation of vision-language models on temporal remote sensing image understanding tasks.
           </p>
         </div>
       </div>
@@ -164,30 +170,112 @@
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/rscc_overview2.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          First image description.
+          An example of RSCC.
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/pipeline.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          Second image description.
+          Construction pipepline.
+        </h2>
+      </div>
+      <!-- Results Table -->
+      <div class="item">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Model Performance Comparison</h2>
+          <div class="content" style="overflow-x: auto;">
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Model (#Activate Params)</th>
+                  <th>ROUGE(%)↑</th>
+                  <th>METEOR(%)↑</th>
+                  <th>BERT(%)↑</th>
+                  <th>ST5-SCS(%)↑</th>
+                  <th>Avg_L (#Words)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>BLIP-3 (3B)</td>
+                  <td>4.53</td>
+                  <td>10.85</td>
+                  <td>98.83</td>
+                  <td>44.05</td>
+                  <td><span style="color:red;">*456</span></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;&nbsp;+ Textual Prompt</td>
+                  <td>10.07 (<span style="color:green;">+5.54↑</span>)</td>
+                  <td>20.69 (<span style="color:green;">+9.84↑</span>)</td>
+                  <td>98.95 (<span style="color:green;">+0.12↑</span>)</td>
+                  <td>63.67 (<span style="color:green;">+19.62↑</span>)</td>
+                  <td><span style="color:red;">*302</span></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td>
+                  <td>8.45 (<span style="color:red;">-1.62↓</span>)</td>
+                  <td>19.18 (<span style="color:red;">-1.51↓</span>)</td>
+                  <td>99.01 (<span style="color:green;">+0.06↑</span>)</td>
+                  <td>68.34 (<span style="color:green;">+4.67↑</span>)</td>
+                  <td><span style="color:red;">*354</span></td>
+                </tr>
+                <tr>
+                  <td>Kimi-VL (3B)</td>
+                  <td>12.47</td>
+                  <td>16.95</td>
+                  <td>98.83</td>
+                  <td>51.35</td>
+                  <td>87</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;&nbsp;+ Textual Prompt</td>
+                  <td>16.83 (<span style="color:green;">+4.36↑</span>)</td>
+                  <td>25.47 (<span style="color:green;">+8.52↑</span>)</td>
+                  <td>99.22 (<span style="color:green;">+0.39↑</span>)</td>
+                  <td>70.75 (<span style="color:green;">+19.40↑</span>)</td>
+                  <td>108</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td>
+                  <td>16.83 (+0.00)</td>
+                  <td>25.39 (<span style="color:red;">-0.08↓</span>)</td>
+                  <td>99.30 (<span style="color:green;">+0.08↑</span>)</td>
+                  <td>69.97 (<span style="color:red;">-0.78↓</span>)</td>
+                  <td>109</td>
+                </tr>
+                <!-- Continue with all other rows from your README.md -->
+                <!-- For brevity, I've shown the first few rows -->
+                <!-- You should include all rows from your README.md table -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- End Results Table -->
+
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/qualitative_results1.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+          Visualization of qualitative results. Critical descriptions are colored in <span style="color:green">green</span> while incorrect and hallucinated sentences/words are <span style="color:red">red</span>.
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/qualitative_results2.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-         Third image description.
+          Visualization of qualitative results. Critical descriptions are colored in <span style="color:green">green</span> while incorrect and hallucinated sentences/words are <span style="color:red">red</span>.
        </h2>
      </div>
      <div class="item">
       <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+      <img src="static/images/win_rate_plot.png" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Fourth image description.
+        Win-rate from QvQ-Max (ground truth) to all baseline models on RSCC subset.
       </h2>
     </div>
   </div>
@@ -272,7 +360,12 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@misc{rscc_chen_2025,
+  title = {RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events},
+  author = {Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang},
+  howpublished = {\url{https://github.com/Bili-Sakura/RSCC}},
+  year = {2025}
+}</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
