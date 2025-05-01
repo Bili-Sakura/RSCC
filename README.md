@@ -1,4 +1,4 @@
-## RSCC
+# RSCC
 
 **RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events**
 
