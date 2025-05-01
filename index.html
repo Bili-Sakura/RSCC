@@ -162,128 +162,108 @@
 </section>
 <!-- End paper abstract -->
 
+<section class="section">
+  <div class="content">
+    <!-- RSCC Example -->
+    <div class="has-text-centered">
+      <img src="static/images/rscc_overview2.png" alt="RSCC Example" style="width: 800px; height: auto;">
+      <div class="figure-caption" style="margin-top: 1rem; font-size: 1.1rem; color: #333; max-width: 800px; margin-left: auto; margin-right: auto;">
+        An example of RSCC.
+      </div>
+    </div>
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/rscc_overview2.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          An example of RSCC.
-        </h2>
+    <!-- Construction Pipeline -->
+    <div class="has-text-centered">
+      <img src="static/images/pipeline.png" alt="Construction Pipeline" style="width: 800px; height: auto;">
+      <div class="figure-caption" style="margin-top: 1rem; font-size: 1.1rem; color: #333; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Construction pipeline.
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/pipeline.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Construction pipepline.
-        </h2>
-      </div>
-      <!-- Results Table -->
-      <div class="item">
-        <div class="container is-max-desktop">
-          <h2 class="title is-3 has-text-centered">Model Performance Comparison</h2>
-          <div class="content" style="overflow-x: auto;">
-            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-              <thead>
-                <tr>
-                  <th>Model (#Activate Params)</th>
-                  <th>ROUGE(%)↑</th>
-                  <th>METEOR(%)↑</th>
-                  <th>BERT(%)↑</th>
-                  <th>ST5-SCS(%)↑</th>
-                  <th>Avg_L (#Words)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>BLIP-3 (3B)</td>
-                  <td>4.53</td>
-                  <td>10.85</td>
-                  <td>98.83</td>
-                  <td>44.05</td>
-                  <td><span style="color:red;">*456</span></td>
-                </tr>
-                <tr>
-                  <td>&nbsp;&nbsp;+ Textual Prompt</td>
-                  <td>10.07 (<span style="color:green;">+5.54↑</span>)</td>
-                  <td>20.69 (<span style="color:green;">+9.84↑</span>)</td>
-                  <td>98.95 (<span style="color:green;">+0.12↑</span>)</td>
-                  <td>63.67 (<span style="color:green;">+19.62↑</span>)</td>
-                  <td><span style="color:red;">*302</span></td>
-                </tr>
-                <tr>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td>
-                  <td>8.45 (<span style="color:red;">-1.62↓</span>)</td>
-                  <td>19.18 (<span style="color:red;">-1.51↓</span>)</td>
-                  <td>99.01 (<span style="color:green;">+0.06↑</span>)</td>
-                  <td>68.34 (<span style="color:green;">+4.67↑</span>)</td>
-                  <td><span style="color:red;">*354</span></td>
-                </tr>
-                <tr>
-                  <td>Kimi-VL (3B)</td>
-                  <td>12.47</td>
-                  <td>16.95</td>
-                  <td>98.83</td>
-                  <td>51.35</td>
-                  <td>87</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;&nbsp;+ Textual Prompt</td>
-                  <td>16.83 (<span style="color:green;">+4.36↑</span>)</td>
-                  <td>25.47 (<span style="color:green;">+8.52↑</span>)</td>
-                  <td>99.22 (<span style="color:green;">+0.39↑</span>)</td>
-                  <td>70.75 (<span style="color:green;">+19.40↑</span>)</td>
-                  <td>108</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td>
-                  <td>16.83 (+0.00)</td>
-                  <td>25.39 (<span style="color:red;">-0.08↓</span>)</td>
-                  <td>99.30 (<span style="color:green;">+0.08↑</span>)</td>
-                  <td>69.97 (<span style="color:red;">-0.78↓</span>)</td>
-                  <td>109</td>
-                </tr>
-                <!-- Continue with all other rows from your README.md -->
-                <!-- For brevity, I've shown the first few rows -->
-                <!-- You should include all rows from your README.md table -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- End Results Table -->
+    </div>
 
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/qualitative_results1.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Visualization of qualitative results. Critical descriptions are colored in <span style="color:green">green</span> while incorrect and hallucinated sentences/words are <span style="color:red">red</span>.
-        </h2>
+    <!-- Model Performance Table -->
+    <div class="has-text-centered">
+      <div class="figure-caption" style="margin-top: 1rem; font-size: 1.1rem; color: #333; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        Model Performance Comparison</div>
+        <div style="overflow-x: auto; max-width: 100%;">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth" style="font-size: 0.85rem; table-layout: fixed; width: 1000px; margin-left: auto; margin-right: auto;">
+            <colgroup><col style="width: 15%;"><col style="width: 10%;"><col style="width: 10%;"><col style="width: 12%;"><col style="width: 12%;"><col style="width: 8%;"></colgroup>
+            <thead>
+              <tr>
+                <th style="font-size: 0.9rem; text-align: center;">Model</th>
+                <th colspan="2" style="font-size: 0.9rem; text-align: center;">N-Gram</th>
+                <th colspan="2" style="font-size: 0.9rem; text-align: center;">Contextual</th>
+                <th style="font-size: 0.9rem; text-align: center;">Avg_L</th>
+              </tr>
+              <tr>
+                <th style="font-size: 0.8rem; text-align: center;">(#Activate Params)</th>
+                <th style="font-size: 0.8rem; text-align: center;">ROUGE(%)↑</th>
+                <th style="font-size: 0.8rem; text-align: center;">METEOR(%)↑</th>
+                <th style="font-size: 0.8rem; text-align: center;">BERT(%)↑</th>
+                <th style="font-size: 0.8rem; text-align: center;">ST5-SCS(%)↑</th>
+                <th style="font-size: 0.8rem; text-align: center;">(#Words)</th>
+              </tr>
+            </thead>
+            <tbody style="font-size: 0.8rem; text-align: left;">
+            <tr><td>BLIP-3 (3B)</td><td>4.53</td><td>10.85</td><td>98.83</td><td>44.05</td><td><span style="color:red;">*456</span></td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>10.07 (<span style="color:green;">+5.54↑</span>)</td><td>20.69 (<span style="color:green;">+9.84↑</span>)</td><td>98.95 (<span style="color:green;">+0.12↑</span>)</td><td>63.67 (<span style="color:green;">+19.62↑</span>)</td><td><span style="color:red;">*302</span></td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>8.45 (<span style="color:red;">-1.62↓</span>)</td><td>19.18 (<span style="color:red;">-1.51↓</span>)</td><td>99.01 (<span style="color:green;">+0.06↑</span>)</td><td>68.34 (<span style="color:green;">+4.67↑</span>)</td><td><span style="color:red;">*354</span></td></tr>
+            <tr><td>Kimi-VL (3B)</td><td>12.47</td><td>16.95</td><td>98.83</td><td>51.35</td><td>87</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>16.83 (<span style="color:green;">+4.36↑</span>)</td><td>25.47 (<span style="color:green;">+8.52↑</span>)</td><td>99.22 (<span style="color:green;">+0.39↑</span>)</td><td>70.75 (<span style="color:green;">+19.40↑</span>)</td><td>108</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>16.83 (+0.00)</td><td>25.39 (<span style="color:red;">-0.08↓</span>)</td><td>99.30 (<span style="color:green;">+0.08↑</span>)</td><td>69.97 (<span style="color:red;">-0.78↓</span>)</td><td>109</td></tr>
+            <tr><td>Phi-4-Multimodal (4B)</td><td>4.09</td><td>1.45</td><td>98.60</td><td>34.55</td><td>7</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>17.08 (<span style="color:green;">+13.00↑</span>)</td><td>19.70 (<span style="color:green;">+18.25↑</span>)</td><td>98.93 (<span style="color:green;">+0.33↑</span>)</td><td>67.62 (<span style="color:green;">+33.07↑</span>)</td><td>75</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>17.05 (<span style="color:red;">-0.03↓</span>)</td><td>19.09 (<span style="color:red;">-0.61↓</span>)</td><td>98.90 (<span style="color:red;">-0.03↓</span>)</td><td>66.69 (<span style="color:red;">-0.93↓</span>)</td><td>70</td></tr>
+            <tr><td>Qwen2-VL (7B)</td><td>11.02</td><td>9.95</td><td>99.11</td><td>45.55</td><td>42</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>19.04 (<span style="color:green;">+8.02↑</span>)</td><td>25.20 (<span style="color:green;">+15.25↑</span>)</td><td>99.01 (<span style="color:red;">-0.10↓</span>)</td><td>72.65 (<span style="color:green;">+27.10↑</span>)</td><td>84</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>18.43 (<span style="color:red;">-0.61↓</span>)</td><td>25.03 (<span style="color:red;">-0.17↓</span>)</td><td>99.03 (<span style="color:green;">+0.02↑</span>)</td><td>72.89 (<span style="color:green;">+0.24↑</span>)</td><td>88</td></tr>
+            <tr><td>LLaVA-NeXT-Interleave (8B)</td><td>12.51</td><td>13.29</td><td>99.11</td><td>46.99</td><td>57</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>16.09 (<span style="color:green;">+3.58↑</span>)</td><td>20.73 (<span style="color:green;">+7.44↑</span>)</td><td>99.22 (<span style="color:green;">+0.11↑</span>)</td><td>62.60 (<span style="color:green;">+15.61↑</span>)</td><td>75</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>15.76 (<span style="color:red;">-0.33↓</span>)</td><td>21.17 (<span style="color:green;">+0.44↑</span>)</td><td>99.24 (<span style="color:green;">+0.02↑</span>)</td><td>65.75 (<span style="color:green;">+3.15↑</span>)</td><td>88</td></tr>
+            <tr><td>LLaVA-OneVision (8B)</td><td>8.40</td><td>10.97</td><td>98.64</td><td>46.15</td><td><span style="color:red;">*221</span></td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>11.15 (<span style="color:green;">+2.75↑</span>)</td><td>19.09 (<span style="color:green;">+8.12↑</span>)</td><td>98.85 (<span style="color:green;">+0.21↑</span>)</td><td>70.08 (<span style="color:green;">+23.93↑</span>)</td><td><span style="color:red;">*285</span></td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>10.68 (<span style="color:red;">-0.47↓</span>)</td><td>18.27 (<span style="color:red;">-0.82↓</span>)</td><td>98.79 (<span style="color:red;">-0.06↓</span>)</td><td>69.34 (<span style="color:red;">-0.74↓</span>)</td><td><span style="color:red;">*290</span></td></tr>
+            <tr><td>InternVL 3 (8B)</td><td>12.76</td><td>15.77</td><td>99.31</td><td>51.84</td><td>64</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td><em>19.81</em> (<span style="color:green;">+7.05↑</span>)</td><td><em>28.51</em> (<span style="color:green;">+12.74↑</span>)</td><td><strong>99.55</strong> (<span style="color:green;">+0.24↑</span>)</td><td>78.57 (<span style="color:green;">+26.73↑</span>)</td><td>81</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>19.70 (<span style="color:red;">-0.11↓</span>)</td><td>28.46 (<span style="color:red;">-0.05↓</span>)</td><td>99.51 (<span style="color:red;">-0.04↓</span>)</td><td><strong>79.18</strong> (<span style="color:green;">+0.61↑</span>)</td><td>84</td></tr>
+            <tr><td>Pixtral (12B)</td><td>12.34</td><td>15.94</td><td>99.34</td><td>49.36</td><td>70</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td><strong>19.87</strong> (<span style="color:green;">+7.53↑</span>)</td><td><strong>29.01</strong> (<span style="color:green;">+13.07↑</span>)</td><td>99.51 (<span style="color:green;">+0.17↑</span>)</td><td><em>79.07</em> (<span style="color:green;">+29.71↑</span>)</td><td>97</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>19.03 (<span style="color:red;">-0.84↓</span>)</td><td>28.44 (<span style="color:red;">-0.57↓</span>)</td><td><em>99.52</em> (<span style="color:green;">+0.01↑</span>)</td><td>78.71 (<span style="color:red;">-0.36↓</span>)</td><td>102</td></tr>
+            <tr><td>CCExpert (7B)</td><td>7.61</td><td>4.32</td><td>99.17</td><td>40.81</td><td>12</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>8.71 (<span style="color:green;">+1.10↑</span>)</td><td>5.35 (<span style="color:green;">+1.03↑</span>)</td><td>99.23 (<span style="color:green;">+0.06↑</span>)</td><td>47.13 (<span style="color:green;">+6.32↑</span>)</td><td>14</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>8.84 (<span style="color:green;">+0.13↑</span>)</td><td>5.41 (<span style="color:green;">+0.06↑</span>)</td><td>99.23 (+0.00)</td><td>46.58 (<span style="color:red;">-0.55↓</span>)</td><td>14</td></tr>
+            <tr><td>TEOChat (7B)</td><td>7.86</td><td>5.77</td><td>98.99</td><td>52.64</td><td>15</td></tr>
+            <tr><td>&nbsp;&nbsp;+ Textual Prompt</td><td>11.81 (<span style="color:green;">+3.95↑</span>)</td><td>10.24 (<span style="color:green;">+4.47↑</span>)</td><td>99.12 (<span style="color:green;">+0.13↑</span>)</td><td>61.73 (<span style="color:green;">+9.09↑</span>)</td><td>22</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Visual Prompt</td><td>11.55 (<span style="color:red;">-0.26↓</span>)</td><td>10.04 (<span style="color:red;">-0.20↓</span>)</td><td>99.09 (<span style="color:red;">-0.03↓</span>)</td><td>62.53 (<span style="color:green;">+0.80↑</span>)</td><td>22</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/qualitative_results2.png" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Visualization of qualitative results. Critical descriptions are colored in <span style="color:green">green</span> while incorrect and hallucinated sentences/words are <span style="color:red">red</span>.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/win_rate_plot.png" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
+    </div>
+
+    <!-- Qualitative Results 1 -->
+    <div class="has-text-centered">
+      <img src="static/images/qualitative_results1.png" alt="Qualitative Results 1" style="width: 800px; height: auto;">
+      <div class="figure-caption" style="margin-top: 1rem; font-size: 1.1rem; color: #333; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Visualization of qualitative results. Critical descriptions are colored in <span style="color:green">green</span> while incorrect and hallucinated sentences/words are <span style="color:red">red</span>.
+      </div>
+    </div>
+
+    <!-- Qualitative Results 2 -->
+    <div class="has-text-centered">
+      <img src="static/images/qualitative_results2.png" alt="Qualitative Results 2" style="width: 800px; height: auto;">
+      <div class="figure-caption" style="margin-top: 1rem; font-size: 1.1rem; color: #333; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Visualization of qualitative results. Critical descriptions are colored in <span style="color:green">green</span> while incorrect and hallucinated sentences/words are <span style="color:red">red</span>.
+      </div>
+    </div>
+
+    <!-- Win Rate Plot -->
+    <div class="has-text-centered">
+      <img src="static/images/win_rate_plot.png" alt="Win Rate Plot" style="width: 800px; height: auto;">
+      <div class="figure-caption" style="margin-top: 1rem; font-size: 1.1rem; color: #333; max-width: 800px; margin-left: auto; margin-right: auto;">
         Win-rate from QvQ-Max (ground truth) to all baseline models on RSCC subset.
-      </h2>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
-
 
 
 
