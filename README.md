@@ -2,30 +2,51 @@
 
 **RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events**
 
-Zhenyuan Chen, Feng Zhang  
-Zhejiang University
+Zhenyuan Chen  
+School of Earth Science, Zhejiang University
 
-<a href='1'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='1'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> <a href='1'><img src='https://img.shields.io/badge/OpenReview-RSCC-red'></a>
+<!-- <a href='1'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  -->
+<a href='https://huggingface.co/datasets/BiliSakura/RSCC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
+ <!-- <a href='1'><img src='https://img.shields.io/badge/OpenReview-RSCC-red'></a> -->
 
 
 ## Overview
 
-We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark designed to advance the development of large vision-language models for remote sensing. Existing image-text datasets typically rely on single-snapshot imagery and lack the temporal detail crucial for Earth observation tasks. By providing 44,136 pairs of pre-event and post-event images accompanied by detailed change captions, RSCC bridges this gap and enables robust disaster-awareness bi-temporal understanding. We demonstrate its utility through comprehensive experiments using interleaved multimodal large language models. Our results highlight RSCC’s ability to facilitate detailed disaster-related analysis, paving the way for more accurate, interpretable, and scalable vision-language applications in remote sensing. 
+We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark designed to advance the development of large vision-language models for remote sensing. Existing image-text datasets typically rely on single-snapshot imagery and lack the temporal detail crucial for Earth observation tasks. By providing 62,315 pairs of pre-event and post-event images accompanied by detailed change captions, RSCC bridges this gap and enables robust disaster-awareness bi-temporal understanding. We demonstrate its utility through comprehensive experiments using interleaved multimodal large language models. Our results highlight RSCC’s ability to facilitate detailed disaster-related analysis, paving the way for more accurate, interpretable, and scalable vision-language applications in remote sensing. 
 
 <div>
-<img src="./assets/rscc_overview.png" width="1200">
+<img src="./assets/rscc_overview2.png" width="1200">
 </div>
 
 ## 📢News/TODO
 
-- [ ] Add the latest temporal MLLMs.
-- [ ] Release code for inference.
-- [ ] Release code for evaluation.
-- [ ] Release RSCC dataset.
+<font color="red">[TODO]</font> Add the latest temporal MLLMs
+
+- [ ] [Skywork-R1V](https://huggingface.co/Skywork)
+- [ ] ...
+
+<font color="blue">[GOING]</font> Release code for inference
+
+- [x] [2025/05/01] Naive inference with baseline models.
+- [ ] Training-free method augmentation (e.g., VCD, DoLa, DeCo).
+
+
+<font color="blue">[GOING]</font> Release RSCC dataset
+
+- [x] [2025/05/01] All pre-event&post-event images of RSCC (total: 62,315 pairs) are released.  
+- [x] [2025/05/01] The change captions of RSCC-Subset (988 pairs) are are released, including 10 baseline model results and QvQ-Max results (ground truth).
+- [x] [2025/05/01] The change captions based on Qwen2.5-VL-72B-Instruct of RSCC (total: 62,315 pairs) are are released.
+- [ ] Release RSCC change captions based on strong models (e.g., QvQ-Max, o3).
+
+<font color="green">[FINISHED]</font> Release code for evaluation
+
+- [x] [2025/05/01] Metrics for N-Gram (e.g. BLEU, METEOR, ROUGE).
+- [x] [2025/05/01] Metrics for contextual similarity (e.g. Sentence-T5 Similarity, BERTScore).
+- [x] [2025/05/01] Auto comparison of change captions using QvQ-Max (visual reasoning VLM) as a  judge.
 
 ## Dataset
 
-The dataset can be downloaded from [Huggingface]().  
+The dataset can be downloaded from [Huggingface](https://huggingface.co/datasets/BiliSakura/RSCC).  
 <div style="display: flex; gap: 20px;">
   <img src="./assets/word_length_distribution.png" alt="Dataset Info" width="500"/>
   <img src="./assets/word_cloud.png" alt="Dataset Info" width="500"/>
@@ -324,19 +345,7 @@ The token usage is auto logged and you can also check `RSCC/data/token_usage.jso
 
 The dataset is released under the [CC-BY-4.0]([https://creativecommons.org/licenses/by-nc/4.0/deed.en](https://creativecommons.org/licenses/by/4.0/deed.en)), which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
 
-<!-- 
 
-## 📜 Citation
-
-```bibtex
-@article{key,
-  title={},
-  author={},
-  journal={},
-  year={}
-}
-``` 
--->
 
 ## 🙏 Acknowledgement
 
@@ -345,3 +354,14 @@ Our RSCC dataset is built based on [xBD](https://www.xview2.org/) and [EBD](http
 We are thankful to [Kimi-VL](https://hf-mirror.com/moonshotai/Kimi-VL-A3B-Instruct), [BLIP-3](https://hf-mirror.com/Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5), [Phi-4-Multimodal](https://hf-mirror.com/microsoft/Phi-4-multimodal-instruct), [Qwen2-VL](https://hf-mirror.com/Qwen/Qwen2-VL-7B-Instruct), [Qwen2.5-VL](https://hf-mirror.com/Qwen/Qwen2.5-VL-72B-Instruct), [LLaVA-NeXT-Interleave](https://hf-mirror.com/llava-hf/llava-interleave-qwen-7b-hf),[LLaVA-OneVision](https://hf-mirror.com/llava-hf/llava-onevision-qwen2-7b-ov-hf), [InternVL 3](https://hf-mirror.com/OpenGVLab/InternVL3-8B), [Pixtral](https://hf-mirror.com/mistralai/Pixtral-12B-2409), [TEOChat](https://github.com/ermongroup/TEOChat) and [CCExpert](https://github.com/Meize0729/CCExpert) for releasing their models and code as open-source contributions.
 
 The metrics implements are derived from [huggingface/evaluate](https://github.com/huggingface/evaluate).
+
+## 📜 Citation
+
+```bibtex
+@article{rscc_chen_2025,
+  title={RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events},
+  author={Zhenyuan Chen},
+  year={2025},
+  howpublished={\url{https://github.com/Bili-Sakura/RSCC}}
+}
+``` 
