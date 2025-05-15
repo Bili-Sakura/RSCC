@@ -1,6 +1,9 @@
 data/token_usage.json
-sample_data/
+test/
 output/
 notebook/
+.env
+*.pyc
 logs/
-.vscode/
+hf-datasets/
+*train

@@ -23,13 +23,10 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 <font color="red">[TODO]</font> Add the latest temporal MLLMs
 
 - [ ] [Skywork-R1V](https://huggingface.co/Skywork)
-- [ ] ...
+- [ ] [NVILA](https://huggingface.co/collections/Efficient-Large-Model/nvila-674f8163543890b35a91b428)
 
-<font color="blue">[GOING]</font> Release code for inference
 
-- [x] [2025/05/01] Naive inference with baseline models.
-- [ ] Training-free method augmentation (e.g., VCD, DoLa, DeCo).
-
+<font color="blue">[GOING]</font> Release RSCCM training scripts
 
 <font color="blue">[GOING]</font> Release RSCC dataset
 
@@ -37,6 +34,11 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 - [x] [2025/05/01] The change captions of RSCC-Subset (988 pairs) are are released, including 10 baseline model results and QvQ-Max results (ground truth).
 - [x] [2025/05/01] The change captions based on Qwen2.5-VL-72B-Instruct of RSCC (total: 62,315 pairs) are are released.
 - [ ] Release RSCC change captions based on strong models (e.g., QvQ-Max, o3).
+
+<font color="green">[FINISHED]</font>  Release code for inference
+
+- [x] [2025/05/01] Naive inference with baseline models.
+- [x] [2025/05/15] Training-free method augmentation (e.g., VCD, DoLa, DeCo).
 
 <font color="green">[FINISHED]</font> Release code for evaluation
 
@@ -276,6 +278,12 @@ python ./inference/xbd_subset_baseline.py
 ```
 
 </details>
+
+### Inference with Correction Decoding
+
+```bash
+python  ./inference_with_cd/inference_baseline_cd.py
+```
 
 ## Evaluation
 

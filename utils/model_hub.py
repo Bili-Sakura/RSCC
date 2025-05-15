@@ -62,15 +62,6 @@ def model_loader(
             trust_remote_code=True,
         )
         processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
-
-    elif model_id == "Qwen/Qwen2-VL-72B-Instruct":
-        model = Qwen2VLForConditionalGeneration.from_pretrained(
-            model_path,
-            torch_dtype=torch.bfloat16,
-            attn_implementation="flash_attention_2",
-            device_map=device_map,
-        )
-        processor = AutoProcessor.from_pretrained(model_path)
     elif model_id == "Qwen/Qwen2-VL-7B-Instruct":
         model = Qwen2VLForConditionalGeneration.from_pretrained(
             model_path,
@@ -78,7 +69,40 @@ def model_loader(
             attn_implementation="flash_attention_2",
         ).to(device)
         processor = AutoProcessor.from_pretrained(model_path)
+    elif model_id == "Qwen/Qwen2-VL-72B-Instruct":
+        print(f"Loading model {model_id} with device_map: {device_map}")
+        print(f"Available devices: {torch.cuda.device_count()} GPUs")
+        model = Qwen2VLForConditionalGeneration.from_pretrained(
+            model_path,
+            torch_dtype=torch.bfloat16,
+            attn_implementation="flash_attention_2",
+            device_map=device_map,
+        )
+        processor = AutoProcessor.from_pretrained(model_path)
+    elif model_id == "Qwen/Qwen2.5-VL-3B-Instruct":
+        model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            model_path,
+            torch_dtype=torch.bfloat16,
+            attn_implementation="flash_attention_2",
+        ).to(device)
+        processor = AutoProcessor.from_pretrained(model_path)
+    elif model_id == "Qwen/Qwen2.5-VL-7B-Instruct":
+        model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            model_path,
+            torch_dtype=torch.bfloat16,
+            attn_implementation="flash_attention_2",
+        ).to(device)
+        processor = AutoProcessor.from_pretrained(model_path)
+    elif model_id == "Qwen/Qwen2.5-VL-32B-Instruct":
+        model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            model_path,
+            torch_dtype=torch.bfloat16,
+            attn_implementation="flash_attention_2",
+        ).to(device)
+        processor = AutoProcessor.from_pretrained(model_path)
     elif model_id == "Qwen/Qwen2.5-VL-72B-Instruct":
+        print(f"Loading model {model_id} with device_map: {device_map}")
+        print(f"Available devices: {torch.cuda.device_count()} GPUs")
         model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
             model_path,
             torch_dtype=torch.bfloat16,
@@ -86,7 +110,7 @@ def model_loader(
             device_map=device_map,
         )
         processor = AutoProcessor.from_pretrained(model_path)
-    elif model_id == "Qwen/Qwen2.5-VL-7B-Instruct":
+    elif model_id == "BiliSakura/RSCCM":
         model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
             model_path,
             torch_dtype=torch.bfloat16,
@@ -131,7 +155,13 @@ def model_loader(
         )
         tokenizer = model.update_special_tokens(tokenizer)
         tokenizer.padding_side = "left"
-    elif model_id == "OpenGVLab/InternVL3-8B":
+    elif (
+        model_id == "OpenGVLab/InternVL3-1B"
+        or model_id == "OpenGVLab/InternVL3-2B"
+        or model_id == "OpenGVLab/InternVL3-8B"
+        or model_id == "OpenGVLab/InternVL3-14B"
+        or model_id == "OpenGVLab/InternVL3-38B"
+    ):
         model = (
             AutoModel.from_pretrained(
                 model_path,

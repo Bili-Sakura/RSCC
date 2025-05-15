@@ -1,26 +1,34 @@
 DEFAULT_DEVICE = "cuda:0"
 PATH_TO_MODEL_FOLDER = "/home/models"
 PATH_TO_DATASET_FOLDER = "/home/datasets"
-MAX_NEW_TOKENS = 128
+MAX_NEW_TOKENS = 512
 TEMPERATURE = 0.5
 DEFAULT_DEVICE_MAP = "auto"
 MODEL_LIST = [
     "moonshotai/Kimi-VL-A3B-Instruct",
     "Qwen/Qwen2-VL-7B-Instruct",
     "Qwen/Qwen2-VL-72B-Instruct",
+    "Qwen/Qwen2.5-VL-3B-Instruct",
     "Qwen/Qwen2.5-VL-7B-Instruct",
+    "Qwen/Qwen2.5-VL-32B-Instruct",
     "Qwen/Qwen2.5-VL-72B-Instruct",
     "microsoft/Phi-4-multimodal-instruct",
     "Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5",
+    "OpenGVLab/InternVL3-1B",
+    "OpenGVLab/InternVL3-2B",
     "OpenGVLab/InternVL3-8B",
+    "OpenGVLab/InternVL3-14B",
+    "OpenGVLab/InternVL3-38B",
     "OpenGVLab/InternVL3-78B",
     "llava-hf/llava-interleave-qwen-7b-hf",
     "llava-hf/llava-onevision-qwen2-7b-ov-hf",
     "mistralai/Pixtral-12B-2409",
+    "BiliSakura/RSCCM",
 ]
 T5_MODEL_REPO = "sentence-transformers/sentence-t5-xxl"
 BERT_MODEL_REPO = "FacebookAI/roberta-large"
-
+BLEURT_MODEL_REPO = "lucadiliello/BLEURT-20"
+# BLEURT_MODEL_REPO = "Elron/bleurt-large-512"
 PART_MAPPING = {
     "part1": (0, 0, 512, 512),
     "part3": (0, 512, 512, 1024),
@@ -86,3 +94,25 @@ Example Response:
     "best_model_id": "Model_3",
     "reason": "Most accurate damage assessment with specific structural details while maintaining clarity"
 }}"""
+# Hyperparameters for DeCo, DoLa, and VCD
+DECO_ALPHA = 0.2
+DECO_THRESHOLD_TOP_P = 0.9
+DECO_THRESHOLD_TOP_K = 20
+DECO_EARLY_EXIT_LAYERS_DEFAULT = [i for i in range(15, 25)]
+# 选中（n/2）到后期层（3*n/4）
+DECO_EARLY_EXIT_LAYERS_DICT = {
+    "QWEN25VL3B": [i for i in range(18, 27)],  # LLM: Qwen2.5 3B layer_num=36
+    "QWEN25VL7B": [i for i in range(14, 21)],  # LLM: Qwen2.5 7B layer_num=28
+    "QWEN25VL32B": [i for i in range(32, 48)],  # LLM: Qwen2.5 32B layer_num=64
+    "QWEN25VL72B": [i for i in range(40, 60)],  # LLM: Qwen2.5-VL 72B layer_num=80
+    "INTERNVL3_1B": [i for i in range(12, 18)],  # LLM：Qwen2.5 0.5B layer_num=24
+    "INTERNVL3_2B": [i for i in range(14, 21)],  # LLM：Qwen2.5 1.5B  layer_num=28
+    "INTERNVL3_8B": [i for i in range(14, 21)],  # LLM：Qwen2.5 7B  layer_num=28
+    "INTERNVL3_14B": [i for i in range(24, 36)],  # LLM: Qwen2.5 14B layer_num=48
+    "INTERNVL3_38B": [i for i in range(32, 48)],  # LLM：Qwen2.5 32B  layer_num=64
+    "INTERNVL3_78B": [i for i in range(40, 60)],  # LLM: Qwen2.5 78B layer_num=80
+}
+DOLA_LAYER = "high"  # "high" "all"
+VCD_ALPHA = 0.5
+VCD_BETA = 0.1
+VCD_NOISE_STEP = 500

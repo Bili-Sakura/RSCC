@@ -3,6 +3,17 @@ import os
 import fcntl
 from pathlib import Path
 
+SUPPORT_MODEL_LIST = [
+    "qvq-max",
+    "qvq-max-latest",
+    "qvq-max-2025-03-25",
+    "qwen-vl-max",
+    "qwen-vl-max-latest",
+    "qwen-vl-max-2025-04-08",
+    "qwen-vl-max-2025-04-02",
+    "qwen-vl-max-2025-01-25",
+]
+
 
 class TokenTracker:
     def __init__(self, initial_tokens=1000000):
@@ -14,7 +25,6 @@ class TokenTracker:
 
     def update_usage(self, api_key, model_name, tokens):
         """Atomic update of token usage with exclusive file locking"""
-        supported_models = ["qvq-max", "qvq-max-latest", "qvq-max-2025-03-25"]
 
         with open(self.token_file, "r+") as f:
             fcntl.flock(f, fcntl.LOCK_EX)  # Exclusive lock for atomic write
@@ -30,13 +40,13 @@ class TokenTracker:
 
             # Initialize model entry if missing
             model_data = data[api_key]
-            for model in supported_models:
+            for model in SUPPORT_MODEL_LIST:
                 model_data.setdefault(model, self.initial_tokens)
 
             # Validate model name
-            if model_name not in supported_models:
+            if model_name not in SUPPORT_MODEL_LIST:
                 raise ValueError(
-                    f"Invalid model name: {model_name}. Supported models: {supported_models}"
+                    f"Invalid model name: {model_name}. Supported models: {SUPPORT_MODEL_LIST}"
                 )
 
             # Update tokens (prevent negative values)
@@ -54,7 +64,6 @@ class TokenTracker:
 
     def get_usage(self, api_key, model_name):
         """Thread-safe retrieval of token balance"""
-        supported_models = ["qvq-max", "qvq-max-latest", "qvq-max-2025-03-25"]
 
         with open(self.token_file, "r") as f:
             fcntl.flock(f, fcntl.LOCK_SH)  # Shared lock for safe read
@@ -65,7 +74,7 @@ class TokenTracker:
             fcntl.flock(f, fcntl.LOCK_UN)  # Release lock early
 
         # Validate inputs
-        if model_name not in supported_models:
+        if model_name not in SUPPORT_MODEL_LIST:
             raise ValueError(f"Invalid model name: {model_name}")
 
         # Calculate current tokens
