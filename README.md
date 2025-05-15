@@ -2,8 +2,8 @@
 
 **RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events**
 
-Zhenyuan Chen  
-School of Earth Science, Zhejiang University
+Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang
+Zhejiang University
 
 <a href='https://bili-sakura.github.io/RSCC/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> 
 <a href='https://huggingface.co/datasets/BiliSakura/RSCC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
@@ -368,7 +368,7 @@ The metrics implements are derived from [huggingface/evaluate](https://github.co
 ```bibtex
 @article{rscc_chen_2025,
   title={RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events},
-  author={Zhenyuan Chen},
+  author={Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang},
   year={2025},
   howpublished={\url{https://github.com/Bili-Sakura/RSCC}}
 }
