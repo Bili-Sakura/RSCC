@@ -3,6 +3,7 @@
 **RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events**
 
 Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang
+
 Zhejiang University
 
 <a href='https://bili-sakura.github.io/RSCC/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> 
@@ -20,31 +21,31 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 
 ## 📢News/TODO
 
-<font color="red">[TODO]</font> Add the latest temporal MLLMs
+**[TODO]** <span style="color:red">Add the latest temporal MLLMs</span>
 
 - [ ] [Skywork-R1V](https://huggingface.co/Skywork)
 - [ ] [NVILA](https://huggingface.co/collections/Efficient-Large-Model/nvila-674f8163543890b35a91b428)
+- [ ] [EarthDial]()
 
+**[IN PROGRESS]** <span style="color:blue">Release RSCCM training scripts</span>
 
-<font color="blue">[GOING]</font> Release RSCCM training scripts
+**[IN PROGRESS]** <span style="color:blue">Release RSCC dataset</span>
 
-<font color="blue">[GOING]</font> Release RSCC dataset
-
-- [x] [2025/05/01] All pre-event&post-event images of RSCC (total: 62,315 pairs) are released.  
-- [x] [2025/05/01] The change captions of RSCC-Subset (988 pairs) are are released, including 10 baseline model results and QvQ-Max results (ground truth).
-- [x] [2025/05/01] The change captions based on Qwen2.5-VL-72B-Instruct of RSCC (total: 62,315 pairs) are are released.
+- [x] <span style="color:gray">2025/05/01</span> All pre-event & post-event images of RSCC (total: 62,315 pairs) are released.  
+- [x] <span style="color:gray">2025/05/01</span> The change captions of RSCC-Subset (988 pairs) are released, including 10 baseline model results and QvQ-Max results (ground truth).
+- [x] <span style="color:gray">2025/05/01</span> The change captions based on Qwen2.5-VL-72B-Instruct of RSCC (total: 62,315 pairs) are released.
 - [ ] Release RSCC change captions based on strong models (e.g., QvQ-Max, o3).
 
-<font color="green">[FINISHED]</font>  Release code for inference
+**[COMPLETED]** <span style="color:green">Release code for inference</span>
 
-- [x] [2025/05/01] Naive inference with baseline models.
-- [x] [2025/05/15] Training-free method augmentation (e.g., VCD, DoLa, DeCo).
+- [x] <span style="color:gray">2025/05/01</span> Naive inference with baseline models.
+- [x] <span style="color:gray">2025/05/15</span> Training-free method augmentation (e.g., VCD, DoLa, DeCo).
 
-<font color="green">[FINISHED]</font> Release code for evaluation
+**[COMPLETED]** <span style="color:green">Release code for evaluation</span>
 
-- [x] [2025/05/01] Metrics for N-Gram (e.g. BLEU, METEOR, ROUGE).
-- [x] [2025/05/01] Metrics for contextual similarity (e.g. Sentence-T5 Similarity, BERTScore).
-- [x] [2025/05/01] Auto comparison of change captions using QvQ-Max (visual reasoning VLM) as a  judge.
+- [x] <span style="color:gray">2025/05/01</span> Metrics for N-Gram (e.g. BLEU, METEOR, ROUGE).
+- [x] <span style="color:gray">2025/05/01</span> Metrics for contextual similarity (e.g. Sentence-T5 Similarity, BERTScore).
+- [x] <span style="color:gray">2025/05/01</span> Auto comparison of change captions using QvQ-Max (visual reasoning VLM) as a judge.
 
 ## Dataset
 
@@ -311,6 +312,14 @@ python ./evaluation/metrics.py \
 --predictions_file ./output/xbd_subset_baseline.jsonl > ./logs/eval.log
 ```
 
+### Fine-tuning RSCCM
+
+```bash
+cd RSCC
+conda env create -f environment_qwenvl_ft.yaml
+conda activate qwenvl_ft
+bash train/qwen-vl-finetune/scripts/sft_for_rscc_model.sh
+```
 
 ### Auto Comparison with MLLMs (e.g. Qwen QvQ-Max)
 
@@ -362,6 +371,8 @@ Our RSCC dataset is built based on [xBD](https://www.xview2.org/) and [EBD](http
 We are thankful to [Kimi-VL](https://hf-mirror.com/moonshotai/Kimi-VL-A3B-Instruct), [BLIP-3](https://hf-mirror.com/Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5), [Phi-4-Multimodal](https://hf-mirror.com/microsoft/Phi-4-multimodal-instruct), [Qwen2-VL](https://hf-mirror.com/Qwen/Qwen2-VL-7B-Instruct), [Qwen2.5-VL](https://hf-mirror.com/Qwen/Qwen2.5-VL-72B-Instruct), [LLaVA-NeXT-Interleave](https://hf-mirror.com/llava-hf/llava-interleave-qwen-7b-hf),[LLaVA-OneVision](https://hf-mirror.com/llava-hf/llava-onevision-qwen2-7b-ov-hf), [InternVL 3](https://hf-mirror.com/OpenGVLab/InternVL3-8B), [Pixtral](https://hf-mirror.com/mistralai/Pixtral-12B-2409), [TEOChat](https://github.com/ermongroup/TEOChat) and [CCExpert](https://github.com/Meize0729/CCExpert) for releasing their models and code as open-source contributions.
 
 The metrics implements are derived from [huggingface/evaluate](https://github.com/huggingface/evaluate).
+
+The training implements are derived from [QwenLM/Qwen2.5-VL](https://github.com/QwenLM/Qwen2.5-VL).
 
 ## 📜 Citation
 

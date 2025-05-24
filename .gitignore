@@ -6,4 +6,3 @@ notebook/
 *.pyc
 logs/
 hf-datasets/
-*train
