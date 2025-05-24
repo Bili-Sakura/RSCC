@@ -25,9 +25,7 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 
 - [ ] [Skywork-R1V](https://huggingface.co/Skywork)
 - [ ] [NVILA](https://huggingface.co/collections/Efficient-Large-Model/nvila-674f8163543890b35a91b428)
-- [ ] [EarthDial]()
-
-**[IN PROGRESS]** <span style="color:blue">Release RSCCM training scripts</span>
+- [ ] [EarthDial](https://huggingface.co/akshaydudhane/EarthDial_4B_RGB)
 
 **[IN PROGRESS]** <span style="color:blue">Release RSCC dataset</span>
 
@@ -40,6 +38,8 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 
 - [x] <span style="color:gray">2025/05/01</span> Naive inference with baseline models.
 - [x] <span style="color:gray">2025/05/15</span> Training-free method augmentation (e.g., VCD, DoLa, DeCo).
+
+**[COMPLETED]** <span style="color:green"> <span style="color:blue">Release RSCCM training scripts</span>
 
 **[COMPLETED]** <span style="color:green">Release code for evaluation</span>
 
