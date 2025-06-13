@@ -210,6 +210,36 @@ def model_loader(
         )
 
         processor = AutoProcessor.from_pretrained(model_path)
+    elif model_id == "Skywork/Skywork-R1V-38B":
+        model = AutoModelForCausalLM.from_pretrained(
+            model_path,
+            torch_dtype=torch.bfloat16,
+            device_map=device_map,
+            trust_remote_code=True,
+        )
+        processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
+    elif model_id == "Efficient-Large-Model/NVILA-8B":
+        model = (
+            LlavaForConditionalGeneration.from_pretrained(
+                model_path,
+                torch_dtype=torch.bfloat16,
+            )
+            .eval()
+            .to(device)
+        )
+        processor = AutoProcessor.from_pretrained(model_path)
+    elif model_id == "akshaydudhane/EarthDial_4B_RGB":
+        model = (
+            AutoModel.from_pretrained(
+                model_path,
+                local_files_only=True,
+                torch_dtype=torch.bfloat16,
+                trust_remote_code=True,
+            )
+            .eval()
+            .to(device)
+        )
+        tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     elif model_id == "mistralai/Pixtral-12B-2409":
         tokenizer = MistralTokenizer.from_file(f"{model_path}/tekken.json")
         model = Transformer.from_folder(model_path).eval().to(device)

@@ -23,6 +23,9 @@ MODEL_LIST = [
     "llava-hf/llava-interleave-qwen-7b-hf",
     "llava-hf/llava-onevision-qwen2-7b-ov-hf",
     "mistralai/Pixtral-12B-2409",
+    "Skywork/Skywork-R1V-38B",
+    "Efficient-Large-Model/NVILA-8B",
+    "akshaydudhane/EarthDial_4B_RGB",
     "BiliSakura/RSCCM",
 ]
 T5_MODEL_REPO = "sentence-transformers/sentence-t5-xxl"
