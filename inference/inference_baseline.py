@@ -366,6 +366,43 @@ def inference_naive(
         change_caption = processor.decode(output[0], skip_special_tokens=True).split(
             "assistant\n"
         )[1]
+    elif model_id == "Skywork/Skywork-R1V-38B":
+        generation_config = dict(max_new_tokens=MAX_NEW_TOKENS, do_sample=True, temperature=0.6, top_p=0.95, repetition_penalty=1.05)
+        pixel_values1 = load_image(pre_image).to(device, torch.bfloat16)
+        pixel_values2 = load_image(post_image).to(device, torch.bfloat16)
+        pixel_values = torch.cat((pixel_values1, pixel_values2), dim=0)
+        num_patches_list = [pixel_values1.size(0), pixel_values2.size(0)]
+        question = f"<image>\n<image>\n{text_prompt}"
+        change_caption = model.chat(
+            tokenizer,
+            pixel_values,
+            question,
+            generation_config,
+            num_patches_list=num_patches_list,
+        )
+    elif model_id == "akshaydudhane/EarthDial_4B_RGB":
+        transform = build_transform(input_size=448)
+        pixel_values = transform(pre_image).unsqueeze(0).to(device, torch.bfloat16)
+        generation_config = {
+            "num_beams": 5,
+            "max_new_tokens": MAX_NEW_TOKENS,
+            "min_new_tokens": 1,
+            "do_sample": False,
+            "temperature": 0.0,
+        }
+        question = text_prompt
+        change_caption = model.chat(
+            tokenizer=tokenizer,
+            pixel_values=pixel_values,
+            question=question,
+            generation_config=generation_config,
+            verbose=True,
+        )
+    elif model_id == "Efficient-Large-Model/NVILA-8B":
+        from llava import Image as LlavaImage
+
+        prompt = [LlavaImage(pre_image), LlavaImage(post_image), text_prompt]
+        change_caption = model.generate_content(prompt)
     elif model_id == "mistralai/Pixtral-12B-2409":
         completion_request = ChatCompletionRequest(
             messages=[

@@ -24,6 +24,9 @@ MODEL_LIST = [
     "llava-hf/llava-onevision-qwen2-7b-ov-hf",
     "mistralai/Pixtral-12B-2409",
     "BiliSakura/RSCCM",
+    "Skywork/Skywork-R1V-38B",
+    "akshaydudhane/EarthDial_4B_RGB",
+    "Efficient-Large-Model/NVILA-8B",
 ]
 T5_MODEL_REPO = "sentence-transformers/sentence-t5-xxl"
 BERT_MODEL_REPO = "FacebookAI/roberta-large"
