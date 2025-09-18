@@ -6,6 +6,8 @@ Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang
 
 Zhejiang University
 
+*Accepted by NeurIPS 2025 Datasets and Benchmarks Track*
+
 <a href='https://bili-sakura.github.io/RSCC/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> 
 <a href='https://huggingface.co/datasets/BiliSakura/RSCC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
 <a href='https://huggingface.co/BiliSakura/RSCCM'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
@@ -20,6 +22,8 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 </div>
 
 ## 📢News/TODO
+
+**[NEWS]** <span style="color:green">🎉 2025/09/19: Our paper "RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events" has been accepted by NeurIPS 2025 Datasets and Benchmarks Track!</span>
 
 **[TODO]** <span style="color:red">Add the latest temporal MLLMs</span>
 
