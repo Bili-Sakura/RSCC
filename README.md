@@ -6,9 +6,12 @@ Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang
 
 Zhejiang University
 
+_Accepted by NeurIPS 2025 Datasets and Benchmarks Track_
+
 <a href='https://bili-sakura.github.io/RSCC/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
 <a href='https://huggingface.co/datasets/BiliSakura/RSCC'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
 <a href='https://huggingface.co/BiliSakura/RSCCM'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
+<a href='https://arxiv.org/abs/2509.01907'><img src="https://img.shields.io/badge/arXiv-red"/></a>
 
 ## Overview
 
@@ -18,20 +21,16 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 <img src="./assets/rscc_overview2.png" width="1200">
 </div>
 
-## 📢News/TODO
+## 📢News
 
-**[TODO]** <span style="color:red">Add the latest temporal MLLMs</span>
+**[NEWS]** <span style="color:green">🎉 2025/09/19: Our paper "RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events" has been accepted by NeurIPS 2025 Datasets and Benchmarks Track!</span>
 
-- [ ] [Skywork-R1V](https://huggingface.co/Skywork)
-- [ ] [NVILA](https://huggingface.co/collections/Efficient-Large-Model/nvila-674f8163543890b35a91b428)
-- [ ] [EarthDial](https://huggingface.co/akshaydudhane/EarthDial_4B_RGB)
-
-**[IN PROGRESS]** <span style="color:blue">Release RSCC dataset</span>
+**[COMPLETED]** <span style="color:blue">Release RSCC dataset</span>
 
 - [x] <span style="color:gray">2025/05/01</span> All pre-event & post-event images of RSCC (total: 62,351 pairs) are released.
 - [x] <span style="color:gray">2025/05/01</span> The change captions of RSCC-Subset (988 pairs) are released, including 10 baseline model results and QvQ-Max results (ground truth).
 - [x] <span style="color:gray">2025/05/01</span> The change captions based on Qwen2.5-VL-72B-Instruct of RSCC (total: 62,351 pairs) are released.
-- [ ] Release RSCC change captions based on strong models (e.g., QvQ-Max, o3).
+- [x] <span style="color:gray">2025/09/09</span> Release RSCC change captions based on strong models (e.g., QvQ-Max, o3).
 
 **[COMPLETED]** <span style="color:green">Release code for inference</span>
 
@@ -374,10 +373,13 @@ The training implements are derived from [QwenLM/Qwen2.5-VL](https://github.com/
 ## 📜 Citation
 
 ```bibtex
-@article{rscc_chen_2025,
-  title={RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events},
-  author={Zhenyuan Chen, Chenxi Wang, Ningyu Zhang, Feng Zhang},
-  year={2025},
-  howpublished={\url{https://github.com/Bili-Sakura/RSCC}}
+@misc{chen2025rscclargescaleremotesensing,
+      title={RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events},
+      author={Zhenyuan Chen and Chenxi Wang and Ningyu Zhang and Feng Zhang},
+      year={2025},
+      eprint={2509.01907},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2509.01907},
 }
 ```
