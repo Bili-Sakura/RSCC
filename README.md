@@ -30,6 +30,7 @@ We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark d
 ## 📢News
 
 **[NEWS]** <span style="color:green"> We release RSCC subset on GoogleDrive for research purpose only. </span>
+
 **[NEWS]** <span style="color:green">🎉 2025/09/19: Our paper "RSCC: A Large-Scale Remote Sensing Change Caption Dataset for Disaster Events" has been accepted by NeurIPS 2025 Datasets and Benchmarks Track!</span>
 
 **[COMPLETED]** <span style="color:blue">Release RSCC dataset</span>
