@@ -14,7 +14,7 @@ _Accepted by NeurIPS 2025 Datasets and Benchmarks Track_
 <a href='https://arxiv.org/abs/2509.01907'><img src="https://img.shields.io/badge/arXiv-red"/></a>
 
 > [!IMPORTANT]
-> We found a great number of people are encountering the issue of accessing to our RSCC subset (see Issue [#6](https://github.com/Bili-Sakura/RSCC/issues/6)). Therefore, we release this subset via GoogleDrive, you can download from this [link]().
+> We found a great number of people are encountering the issue of accessing to our RSCC subset (see Issue [#6](https://github.com/Bili-Sakura/RSCC/issues/6)). Therefore, we release this subset via GoogleDrive, you can download from this [link](https://drive.google.com/file/d/1ZZ6_pN2Z9V-pDKVFfMs5uL5Xef96Tmiv/view?usp=sharing).
 
 > [!WARNING]
 > The user should strictly obey the [xBD License](https://www.xview2.org/). Also, we (RSCC Team) highlight the distribution of this subset data is for research purpose only. We will take down it if any copyright issue concerned.
