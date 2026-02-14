@@ -13,6 +13,12 @@ _Accepted by NeurIPS 2025 Datasets and Benchmarks Track_
 <a href='https://huggingface.co/BiliSakura/RSCCM'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a>
 <a href='https://arxiv.org/abs/2509.01907'><img src="https://img.shields.io/badge/arXiv-red"/></a>
 
+> [!IMPORTANT]
+> We found a great number of people are encountering the issue of accessing to our RSCC subset (see Issue [#6](https://github.com/Bili-Sakura/RSCC/issues/6)). Therefore, we release this subset via GoogleDrive, you can download from this [link]().
+
+> [!WARNING]
+> The user should strictly obey the [xBD License](https://www.xview2.org/). Also, we (RSCC Team) highlight the distribution of this subset data is for research purpose only. We will take down it if any copyright issue concerned.
+
 ## Overview
 
 We introduce the Remote Sensing Change Caption (RSCC) dataset, a new benchmark designed to advance the development of large vision-language models for remote sensing. Existing image-text datasets typically rely on single-snapshot imagery and lack the temporal detail crucial for Earth observation tasks. By providing 62,351 pairs of pre-event and post-event images accompanied by detailed change captions, RSCC bridges this gap and enables robust disaster-awareness bi-temporal understanding. We demonstrate its utility through comprehensive experiments using interleaved multimodal large language models. Our results highlight RSCC’s ability to facilitate detailed disaster-related analysis, paving the way for more accurate, interpretable, and scalable vision-language applications in remote sensing.
